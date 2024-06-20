@@ -1,0 +1,157 @@
+.cart-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: poppins;
+  margin-top: 100px;
+}
+
+.bill-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: poppins;
+  font-weight: 300;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item img {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.product-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.product-name {
+  font-size: 1.2em;
+  color: #333;
+  font-weight: 200;
+}
+
+.product-price {
+  font-size: 1.1em;
+  color: #666;
+  margin-top: 5px;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+a{
+  text-decoration: none;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.cart-total h3 {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: 300;
+}
+
+.cart-total .clear-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: -30px;
+}
+
+.checkout-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.emptyBox-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.emptyBox {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.emptyBox-text {
+  font-size: 1.2em;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-details {
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .cart-total {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-total .clear-button,
+  .cart-total h3 {
+    margin-top: 10px;
+  }
+
+  .checkout-container {
+    justify-content: center;
+  }
+}

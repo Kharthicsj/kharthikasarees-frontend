@@ -1,0 +1,112 @@
+.header-background {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribute items evenly */
+  padding: 5px 20px; /* Reduced header padding */
+  background-color: #ffffff;
+  height: 70px; /* Smaller header height */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.kslogo {
+  width: 80px; /* Adjusted logo width */
+  height: auto;
+  margin-right: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  position: relative; /* Position the search box relative to its parent */
+  flex-grow: 1;
+  max-width: 300px;
+  margin-right: 450px; /* Add margin to separate from login button */
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+}
+
+.user-options a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+#loginLogo {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.Login:hover {
+  background-color: #0056b3;
+}
+
+/* Media queries for responsive design */
+
+@media (min-width: 1025px) {
+  .search-box {
+    max-width: 300px;
+    margin-right: 450px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .header-background {
+    padding: 10px; /* Adjust padding for tablets */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
+
+  .kslogo {
+    margin-right: 10px;
+  }
+
+  .search-box {
+    width: auto;
+    flex-grow: 1; /* Allow the search box to grow and take up available space */
+    margin-right: 450px; /* Adjust margin for tablets */
+  }
+
+  .Login {
+    margin-left: 10px; /* Adjust margin for tablets */
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .header-background {
+    padding: 10px; /* Adjust padding for mobile devices */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
+
+  .kslogo {
+    margin-right: 10px;
+  }
+
+  .search-box {
+    width: 100%; /* Make the search box take full width */
+    margin-bottom: 10px; /* Add margin to separate items */
+  }
+
+  .Login {
+    justify-content: center;
+    margin-left: 0;
+  }
+}

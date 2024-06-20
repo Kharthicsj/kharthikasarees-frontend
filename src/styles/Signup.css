@@ -1,0 +1,127 @@
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2; /* Light background color */
+}
+
+/* Signup form box */
+.signup-box {
+  width: 600px; /* Increased width */
+  padding: 40px; /* Increased padding */
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align text */
+}
+
+/* Heading inside the signup box */
+.signup-heading {
+  font-size: 28px; /* Increased font size */
+  margin-bottom: 20px; /* Increased margin */
+  color: #333; /* Dark text color */
+}
+
+/* Signup form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align items */
+}
+
+/* Inputs inside the signup form */
+.signup-input {
+  width: 350px;
+  margin-bottom: 15px;
+  padding: 12px; /* Increased padding */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Terms and conditions container */
+.terms-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.terms-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.terms-container label {
+  font-size: 14px;
+}
+
+/* Submit button */
+.signup-submit {
+  width: 250px;
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  padding: 12px; /* Increased padding */
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.signup-submit:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error message */
+.signup-error {
+  color: red;
+  margin-top: 10px;
+  text-align: center; /* Center align text */
+}
+
+/* Links inside the signup box */
+.signup-link-container {
+  text-align: center; /* Center align text */
+  margin-top: 20px;
+}
+
+.signup-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .signup-box {
+    width: 90%; /* Make the box responsive */
+  }
+  .signup-input{
+    width: 250px;
+  }
+}

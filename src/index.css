@@ -1,0 +1,18 @@
+body {
+  background-color: #F3F3F4;
+  border: none;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media (max-width : 600px){
+  body{
+    background-color: #F3F3F4;
+  }
+}

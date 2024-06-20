@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Pochampalli Saree",
+    "price": 1500,
+    "thumbnail": "Product-1/pochampalli_saree.webp",
+    "description": "A beautiful Pochampalli saree."
+  },
+  {
+    "id": "2",
+    "name": "Silk Saree",
+    "price": 2000,
+    "thumbnail": "Product-2/silk_saree.webp",
+    "description": "A luxurious silk saree."
+  }
+]
