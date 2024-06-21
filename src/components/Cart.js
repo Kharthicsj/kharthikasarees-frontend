@@ -24,7 +24,7 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      const response = await axios.post('https://kharthikasarees-backend.onrender.com/pay', data);
+      const response = await axios.post('http://https://kharthikasarees-backend.onrender.com/pay', data);
       if (response.data && response.data.redirectUrl) {
         window.location.href = response.data.redirectUrl;
       } else {

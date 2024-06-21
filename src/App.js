@@ -17,7 +17,8 @@ import Wishlist from "./components/Wishlist";
 import { WishlistProvider } from "./context/WishlistContext";
 import Forgotpassword from "./components/Forgotpassword";
 import Cart from './components/Cart';
-import { CartProvider } from "./context/CartContext"; // Import CartProvider
+import { CartProvider } from "./context/CartContext";
+import OrderSuccess from "./components/OrderSuccess";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -101,6 +102,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Cart searchQuery={searchQuery} />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/order-successful"
+              element={
+                <ProtectedRoute>
+                  <OrderSuccess />
                 </ProtectedRoute>
               }
             />
