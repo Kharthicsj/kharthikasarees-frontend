@@ -1,4 +1,3 @@
-// src/components/OrderSuccess.js
 import React, { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../assets/Animation.json';
@@ -7,6 +6,8 @@ import axios from 'axios';
 
 const OrderSuccess = () => {
   const [transactionId, setTransactionId] = useState(null);
+  const [userDetails, setUserDetails] = useState({});
+  const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,28 +16,33 @@ const OrderSuccess = () => {
     const queryParams = new URLSearchParams(location.search);
     const merchantTransactionId = queryParams.get('merchantTransactionId');
 
-    const verifyOrder = async () => {
-      const userEmail = localStorage.getItem('userEmail');
-      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      if (!userEmail || cartItems.length === 0 || !merchantTransactionId) {
-        navigate('/');
-        return;
-      }
-
+    const fetchOrderDetails = async () => {
       try {
-        const response = await axios.post('https://kharthikasarees-backend.onrender.com/order-successful', { email: userEmail, cartItems, merchantTransactionId });
-        if (response.data.transactionId) {
-          setTransactionId(response.data.transactionId);
+        // Fetch user details
+        const userEmail = localStorage.getItem('userEmail');
+        const userDetailsResponse = await axios.get(`https://kharthikasarees-backend.onrender.com/api/user?email=${userEmail}`);
+        const user = userDetailsResponse.data;
+
+        // Fetch order details based on merchantTransactionId
+        const orderDetailsResponse = await axios.get(`https://kharthikasarees-backend.onrender.com/api/orders/${merchantTransactionId}`);
+        
+        if (orderDetailsResponse.data && orderDetailsResponse.data.transactionId) {
+          setTransactionId(orderDetailsResponse.data.transactionId);
+          setUserDetails(user);
+          setCartItems(orderDetailsResponse.data.cartItems);
+        } else {
+          console.error("Order details not found.");
+          navigate('/');
         }
       } catch (error) {
-        console.error("Order verification failed:", error);
+        console.error("Failed to fetch order details:", error);
         navigate('/');
       } finally {
         setLoading(false);
       }
     };
 
-    verifyOrder();
+    fetchOrderDetails();
   }, [location, navigate]);
 
   const defaultOptions = {
@@ -57,6 +63,17 @@ const OrderSuccess = () => {
       <Lottie options={defaultOptions} height={200} width={200} />
       <h1 style={styles.message}>Order Placed Successfully!</h1>
       <p style={styles.transactionId}>Transaction ID: {transactionId}</p>
+      <div style={styles.orderDetails}>
+        <h3>Order Details:</h3>
+        <p>User: {userDetails.firstname} {userDetails.lastname}</p>
+        <p>Email: {userDetails.email}</p>
+        <p>Phone: {userDetails.phonenumber}</p>
+        <ul>
+          {cartItems.map(item => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -80,6 +97,15 @@ const styles = {
     color: '#6c757d',
     fontSize: '18px',
     marginTop: '10px'
+  },
+  orderDetails: {
+    marginTop: '30px',
+    textAlign: 'left',
+    maxWidth: '600px',
+    padding: '20px',
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
   }
 };
 
