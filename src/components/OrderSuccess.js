@@ -23,16 +23,23 @@ const OrderSuccess = () => {
       try {
         const transactionId = new URLSearchParams(location.search).get('transactionId');
         
-        // Adding error handling for JSON parsing
         let cart = null;
         let userEmail = null;
+
         try {
           cart = JSON.parse(localStorage.getItem('cart'));
-          userEmail = JSON.parse(localStorage.getItem('userEmail'));
         } catch (parseError) {
-          console.error('Error parsing local storage data:', parseError);
+          console.error('Error parsing cart data:', parseError);
           navigate('/'); // Redirect to home if there is a parsing error
           return;
+        }
+
+        try {
+          // Check if userEmail is a valid JSON
+          userEmail = JSON.parse(localStorage.getItem('userEmail'));
+        } catch (parseError) {
+          // If JSON.parse fails, assume userEmail is a plain string
+          userEmail = localStorage.getItem('userEmail');
         }
 
         if (!transactionId || !cart || !userEmail) {
@@ -48,7 +55,7 @@ const OrderSuccess = () => {
         setIsValid(true);
       } catch (error) {
         console.error("Error sending order details:", error);
-        navigate('/');
+        navigate('/'); // Redirect to home if there was an error
       }
     };
 
@@ -56,7 +63,7 @@ const OrderSuccess = () => {
   }, [location, navigate]);
 
   if (!isValid) {
-    return null;
+    return null; // Render nothing until validation is complete
   }
 
   return (
