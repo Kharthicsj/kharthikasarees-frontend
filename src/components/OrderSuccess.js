@@ -47,7 +47,7 @@ const OrderSuccess = () => {
           return;
         }
 
-        await axios.post('/order-successful', {
+        await axios.post('https://kharthikasarees-backend.onrender.com/order-successful', {
           transactionId,
           cart,
           userEmail
