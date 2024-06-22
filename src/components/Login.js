@@ -29,7 +29,7 @@ const Login = () => {
       console.error('Error:', error);
       setError('An error occurred while processing the request.');
     }
-    setLoading(false); // End loading
+    setLoading(false);
   };
 
   return (

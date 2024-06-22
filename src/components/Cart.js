@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import EmptyBox from '../assets/giftBox.png';
@@ -7,22 +7,23 @@ import "../styles/Cart.css";
 import axios from 'axios';
 
 const Cart = () => {
-
-  let data = {
-    name: "kharthic",
-    amount: 1,
-    number: '8903443449',
-    MID: 'MID' + Date.now(),
-    transactionId: 'T' + Date.now()
-  }
-
   const { cart, removeFromCart, clearCart } = useCart();
+  const [loading, setLoading] = useState(false);
 
   const calculateTotal = () => {
     return cart.reduce((total, product) => total + parseFloat(product.price), 0).toFixed(2);
   };
 
   const handleCheckout = async () => {
+    let data = {
+      name: "kharthic",
+      amount: calculateTotal() * 100, // Assuming the amount needs to be in paise
+      number: '8903443449',
+      MID: 'MID' + Date.now(),
+      transactionId: 'T' + Date.now()
+    };
+
+    setLoading(true);
     try {
       const response = await axios.post('https://kharthikasarees-backend.onrender.com/pay', data);
       if (response.data && response.data.redirectUrl) {
@@ -32,6 +33,8 @@ const Cart = () => {
       }
     } catch (error) {
       console.error('Error during checkout:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,7 +71,9 @@ const Cart = () => {
             <h3>Total: ₹{calculateTotal()}</h3>
           </div>
           <div className="checkout-container">
-            <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
+            <button className="checkout-button" onClick={handleCheckout} disabled={loading}>
+              {loading ? <span className="spinner"></span> : 'Checkout'}
+            </button>
           </div>
         </div>
       )}

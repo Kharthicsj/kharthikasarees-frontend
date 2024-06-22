@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import animationData from '../assets/Animation.json';
+import axios from 'axios';
 
 const OrderSuccess = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isValid, setIsValid] = useState(false);
+
   const defaultOptions = {
     loop: false,
     autoplay: true,
@@ -11,6 +17,47 @@ const OrderSuccess = () => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
+
+  useEffect(() => {
+    const validateOrder = async () => {
+      try {
+        const transactionId = new URLSearchParams(location.search).get('transactionId');
+        
+        // Adding error handling for JSON parsing
+        let cart = null;
+        let userEmail = null;
+        try {
+          cart = JSON.parse(localStorage.getItem('cart'));
+          userEmail = JSON.parse(localStorage.getItem('userEmail'));
+        } catch (parseError) {
+          console.error('Error parsing local storage data:', parseError);
+          navigate('/'); // Redirect to home if there is a parsing error
+          return;
+        }
+
+        if (!transactionId || !cart || !userEmail) {
+          navigate('/'); // Redirect to home if required data is missing
+          return;
+        }
+
+        await axios.post('/order-successful', {
+          transactionId,
+          cart,
+          userEmail
+        });
+        setIsValid(true);
+      } catch (error) {
+        console.error("Error sending order details:", error);
+        navigate('/');
+      }
+    };
+
+    validateOrder();
+  }, [location, navigate]);
+
+  if (!isValid) {
+    return null;
+  }
 
   return (
     <div style={styles.container}>
