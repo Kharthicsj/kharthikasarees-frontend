@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loading from './Loading'; // Make sure to import your Loading component
 import '../styles/Account.css';
 
 const Account = () => {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
   const [address, setAddress] = useState({
     addressLine1: '',
     city: '',
@@ -34,7 +36,11 @@ const Account = () => {
           }
         } catch (error) {
           console.error('Error fetching user data:', error);
+        } finally {
+          setLoading(false); // Set loading to false after data is fetched
         }
+      } else {
+        setLoading(false); // Set loading to false if no user email found
       }
     };
 
@@ -69,6 +75,10 @@ const Account = () => {
       ...address,
       [name]: value
     });
+  }
+
+  if (loading) {
+    return <Loading />; // Render the Loading component while loading
   }
 
   return (
