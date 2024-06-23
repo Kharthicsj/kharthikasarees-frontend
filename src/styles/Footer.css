@@ -112,6 +112,17 @@
     margin: 10px;
   }
 
+  .footer-links a {
+    color: #777;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover{
+    color: #ff9900;
+  }
+
 @media (max-width: 600px){
   .footer {
     flex-direction: column;

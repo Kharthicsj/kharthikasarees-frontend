@@ -19,6 +19,10 @@ import Forgotpassword from "./components/Forgotpassword";
 import Cart from './components/Cart';
 import { CartProvider } from "./context/CartContext";
 import OrderSuccess from "./components/OrderSuccess";
+import Refundandcancellation from "./components/Refund&cancellation";
+import Shippinganddelivery from "./components/Shipping&delivery";
+import Privacypolicy from "./components/Privacypolicy";
+import Termsandconditions from "./components/Terms&conditions";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,6 +37,10 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot" element={<Forgotpassword />} />
+            <Route path="/terms" element={<Termsandconditions />} />
+            <Route path="/privacy" element={<Privacypolicy />}/>
+            <Route path="/refundpolicy" element={<Refundandcancellation />}/>
+            <Route path="/Shippingpolicy" element={<Shippinganddelivery />} />
             <Route
               path="/cotton"
               element={

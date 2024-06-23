@@ -1,5 +1,7 @@
 import React from "react";
 import "../../src/styles/Footer.css";
+import { Link } from "react-router-dom"; // Assuming you're using React Router for navigation
+
 import facebooklogo from "../assets/facebook.png";
 import instalogo from "../assets/instagram.png";
 import youtubelogo from "../assets/youtube.png";
@@ -70,6 +72,12 @@ const Footer = () => {
             <img src={youtubelogo} alt="Youtube" />
           </a>
         </p>
+        <div className="shipping-delivery">
+        <div className="footer-links">
+          <Link to="/Shippingpolicy">Shipping Policy</Link>
+          <Link to="/refundpolicy">Refund and Cancellation</Link>
+        </div>
+      </div>
       </div>
     </footer>
   );
