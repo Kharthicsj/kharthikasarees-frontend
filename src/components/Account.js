@@ -5,7 +5,8 @@ import '../styles/Account.css';
 
 const Account = () => {
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); // Add loading state for data fetch
+  const [submitting, setSubmitting] = useState(false); // Add loading state for form submission
   const [address, setAddress] = useState({
     addressLine1: '',
     city: '',
@@ -49,6 +50,7 @@ const Account = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSubmitting(true); // Set submitting to true when form is submitted
     const userEmail = localStorage.getItem('userEmail');
     try {
       const response = await axios.post("https://kharthikasarees-backend.onrender.com/update-address", {
@@ -66,6 +68,8 @@ const Account = () => {
     } catch (error) {
       console.error('Error updating address:', error);
       alert('An error occurred while updating the address');
+    } finally {
+      setSubmitting(false); // Set submitting to false after the request is done
     }
   }
 
@@ -134,7 +138,9 @@ const Account = () => {
           value={address.phonenumber} 
           onChange={handleInputChange} 
         />
-        <input type="submit" value="Update Address" />
+        <button type="submit" disabled={submitting}>
+          {submitting ? <span className="spinner"></span> : 'Update Address'}
+        </button>
       </form>
     </div>
   );
