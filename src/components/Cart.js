@@ -3,19 +3,27 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import EmptyBox from '../assets/giftBox.png';
 import Loading from './Loading';
-import "../styles/Cart.css";
+import '../styles/Cart.css';
 import axios from 'axios';
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [isAddressUpdated, setIsAddressUpdated] = useState(false);
-  const userEmail = useState(localStorage.getItem('userEmail'));
+  const userEmail = localStorage.getItem('userEmail'); // Fetch userEmail directly
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('https://kharthikasarees-backend.onrender.com/api/user', { params: { email: userEmail } });
+        if (!userEmail) {
+          console.error('User email not found in local storage');
+          return;
+        }
+
+        const response = await axios.get('https://kharthikasarees-backend.onrender.com/api/user', {
+          params: { email: userEmail }
+        });
+
         const userData = response.data;
 
         // Check if all required fields are filled
@@ -30,9 +38,7 @@ const Cart = () => {
       }
     };
 
-    if (userEmail) {
-      fetchUserData();
-    }
+    fetchUserData();
   }, [userEmail]);
 
   const calculateTotal = () => {
@@ -46,7 +52,7 @@ const Cart = () => {
     }
 
     let data = {
-      name: "kharthic",
+      name: 'kharthic',
       amount: calculateTotal() * 100, // Assuming the amount needs to be in paise
       number: '8903443449',
       MID: 'MID' + Date.now(),
