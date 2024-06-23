@@ -24,6 +24,48 @@ body {
   margin-top: 100px;
 }
 
+.account-form button {
+  position: relative;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 180px;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 115px;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  margin-top: 20px;
+  margin-right: 100px;
+}
+
+.account-form button:hover {
+  background-color: #45a049;
+}
+
+.account-form button:disabled {
+  background-color: #a5d6a7; 
+  cursor: not-allowed;
+}
+
+
+.spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Account icon styling */
 .account-icon {
   margin-top: 20px;
