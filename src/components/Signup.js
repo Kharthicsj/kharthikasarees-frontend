@@ -53,15 +53,13 @@ const Signup = () => {
         } else {
           setError("An error occurred during registration.");
         }
-        setLoading(false); // End loading on error
+        setLoading(false);
       });
   };
 
   const redirect = () => {
-    // Redirect to the signin page after successful registration
-    // You can update the redirect URL as needed
-    navigate("/"); // Use navigate to redirect
-    setLoading(false); // End loading on success
+    navigate("/");
+    setLoading(false); 
   };
 
   return (

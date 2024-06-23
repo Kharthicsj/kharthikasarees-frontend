@@ -3,11 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import animationData from '../assets/Animation.json';
 import axios from 'axios';
+import Loading from './Loading';
 
 const OrderSuccess = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setLoading] = useState(true); // State to manage loading state
 
   const defaultOptions = {
     loop: false,
@@ -22,45 +24,50 @@ const OrderSuccess = () => {
     const validateOrder = async () => {
       try {
         const transactionId = new URLSearchParams(location.search).get('transactionId');
-        
-        let cart = null;
-        let userEmail = null;
+        const cartData = localStorage.getItem('cart');
+        const userEmailData = localStorage.getItem('userEmail');
 
-        try {
-          cart = JSON.parse(localStorage.getItem('cart'));
-        } catch (parseError) {
-          console.error('Error parsing cart data:', parseError);
-          navigate('/'); // Redirect to home if there is a parsing error
-          return;
-        }
-
-        try {
-          // Check if userEmail is a valid JSON
-          userEmail = JSON.parse(localStorage.getItem('userEmail'));
-        } catch (parseError) {
-          // If JSON.parse fails, assume userEmail is a plain string
-          userEmail = localStorage.getItem('userEmail');
-        }
-
-        if (!transactionId || !cart || !userEmail) {
+        if (!transactionId || !cartData || !userEmailData) {
+          console.error('Missing required data:', { transactionId, cartData, userEmailData });
           navigate('/'); // Redirect to home if required data is missing
           return;
         }
 
+        let cart;
+        try {
+          cart = JSON.parse(cartData);
+        } catch (parseError) {
+          console.error('Error parsing cart data:', parseError.message);
+          console.error('Cart data content:', cartData);
+          navigate('/'); // Redirect to home if there is a parsing error
+          return;
+        }
+
+        // userEmail is a plain string, no need to parse it as JSON
+        const userEmail = userEmailData;
+
+        // Proceed with your axios post request here
         await axios.post('https://kharthikasarees-backend.onrender.com/order-successful', {
           transactionId,
           cart,
           userEmail
         });
+
         setIsValid(true);
       } catch (error) {
         console.error("Error sending order details:", error);
         navigate('/'); // Redirect to home if there was an error
+      } finally {
+        setLoading(false); // Set loading to false once process completes
       }
     };
 
     validateOrder();
   }, [location, navigate]);
+
+  if (isLoading) {
+    return <Loading />; // Render loading spinner while loading is true
+  }
 
   if (!isValid) {
     return null; // Render nothing until validation is complete

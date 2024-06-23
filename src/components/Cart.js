@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import EmptyBox from '../assets/giftBox.png';
@@ -9,12 +9,42 @@ import axios from 'axios';
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
+  const [isAddressUpdated, setIsAddressUpdated] = useState(false);
+  const userEmail = useState(localStorage.getItem('userEmail'));
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('https://kharthikasarees-backend.onrender.com/api/user', { params: { email: userEmail } });
+        const userData = response.data;
+
+        // Check if all required fields are filled
+        if (userData.address && userData.city && userData.state && userData.pincode && userData.phonenumber) {
+          setIsAddressUpdated(true);
+        } else {
+          setIsAddressUpdated(false);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        setIsAddressUpdated(false);
+      }
+    };
+
+    if (userEmail) {
+      fetchUserData();
+    }
+  }, [userEmail]);
 
   const calculateTotal = () => {
     return cart.reduce((total, product) => total + parseFloat(product.price), 0).toFixed(2);
   };
 
   const handleCheckout = async () => {
+    if (!isAddressUpdated) {
+      alert('Please update your shipping address data in the account tab before checking out.');
+      return;
+    }
+
     let data = {
       name: "kharthic",
       amount: calculateTotal() * 100, // Assuming the amount needs to be in paise

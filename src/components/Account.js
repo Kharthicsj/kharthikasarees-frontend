@@ -17,7 +17,7 @@ const Account = () => {
       const userEmail = localStorage.getItem('userEmail');
       if (userEmail) {
         try {
-          const response = await axios.get('https://kharthikasarees-backend.onrender.com/api/user', {
+          const response = await axios.get('http://localhost:4000/api/user', {
             params: { email: userEmail }
           });
           if (response.status === 200) {
