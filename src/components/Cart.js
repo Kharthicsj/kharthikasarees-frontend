@@ -10,6 +10,7 @@ const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [isAddressUpdated, setIsAddressUpdated] = useState(false);
+  const [userData, setUserData] = useState(null); // State variable for user data
   const userEmail = localStorage.getItem('userEmail'); // Fetch userEmail directly
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const Cart = () => {
         });
 
         const userData = response.data;
+        setUserData(userData); // Update state with fetched user data
 
         // Check if all required fields are filled
         if (userData.address && userData.city && userData.state && userData.pincode && userData.phonenumber) {
@@ -51,10 +53,15 @@ const Cart = () => {
       return;
     }
 
+    if (!userData) {
+      alert('User data not loaded. Please try again.');
+      return;
+    }
+
     let data = {
-      name: 'kharthic',
-      amount: calculateTotal() * 100, // Assuming the amount needs to be in paise
-      number: '8903443449',
+      name: userData.firstname, 
+      amount: calculateTotal() * 100, 
+      number: userData.phonenumber, 
       MID: 'MID' + Date.now(),
       transactionId: 'T' + Date.now()
     };
