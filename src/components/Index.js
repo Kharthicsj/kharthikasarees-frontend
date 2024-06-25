@@ -84,9 +84,66 @@ const Index = () => {
           </Slider>
         </div>
       </section>
-      <section className="section-3">
-        {/* Offer section */}
+      <section id="about" className="section-3">
+        <div className="about-content">
+          <h2 id="section3-title">Crafting Handloom Sarees</h2>
+          <p>
+            "At Kharthika Sarees, we're not just creating handloom sarees; <br />
+            we're weaving the art of tradition into every intricate thread,
+            delivering elegance that transcends time."
+          </p>
+          <div className="videos">
+            <div className="video">
+              <iframe
+                title="Crafting Handloom Sarees Video 1"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/H-SqHgK8j5A?si=IhJs6GxfQ26ggZmg&autoplay=0&mute=0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="video">
+              <iframe
+                title="Crafting Handloom Sarees Video 2"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/hbwU8YjIsIs?si=xjd31ndel2KXxgEo&autoplay=0&mute=0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="video">
+              <iframe
+                title="Crafting Handloom Sarees Video 3"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/NEEG30J-Ur4?si=oJg48YCmRQmEyNHw"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="video">
+              <iframe
+                title="Crafting Handloom Sarees Video 4"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/Yjr4gpOSdrs?si=fOIs-4RX77obGyMu"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+          <p className="section-description">
+            Explore the artistry and tradition behind every saree.
+          </p>
+        </div>
       </section>
+      <section className="section-4">{/* Offer section */}</section>
     </div>
   );
 };
