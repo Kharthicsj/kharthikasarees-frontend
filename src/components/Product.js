@@ -110,7 +110,7 @@ const Product = () => {
           </Slider>
         </div>
         <div className="buttons-container">
-          <h2 className="spe-pro-title">{productData.name}</h2>
+          <h2 className="spe-pro-title">₹{productData.price}<br />{productData.name}</h2>         
           <button
             className="add-to-cart-button"
             onClick={handleCartToggle}
