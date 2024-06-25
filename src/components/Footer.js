@@ -1,25 +1,56 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import "../../src/styles/Footer.css";
-import { Link } from "react-router-dom"; // Assuming you're using React Router for navigation
-
 import facebooklogo from "../assets/facebook.png";
 import instalogo from "../assets/instagram.png";
 import youtubelogo from "../assets/youtube.png";
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post('https://kharthikasarees-backend.onrender.com/newsletter', { email });
+      if (response.data.success) {
+        setMessage('Successfully subscribed to the newsletter!');
+        setEmail('');
+      } else if (response.data.error) {
+        setMessage('User already registered to the newsletter.');
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    } catch (error) {
+      setError('Failed to subscribe. Please try again.');
+    }
+    setLoading(false);
+  };
+
   return (
     <footer className="footer">
       <div className="newsletter">
         <h2 className="section-title">Subscribe to our Newsletter</h2>
-        <form action="#" method="post">
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
           />
-          <button type="submit">Subscribe</button>
+          <button type="submit" disabled={loading}>
+            {loading ? <LoadingSpinner /> : 'Subscribe'}
+          </button>
         </form>
+        {message && <p className="success-message">{message}</p>}
+        {error && <p className="error-message">{error}</p>}
       </div>
       <div className="google-map">
         <iframe
@@ -73,14 +104,21 @@ const Footer = () => {
           </a>
         </p>
         <div className="shipping-delivery">
-        <div className="footer-links">
-          <Link to="/Shippingpolicy">Shipping Policy</Link>
-          <Link to="/refundpolicy">Refund and Cancellation</Link>
+          <div className="footer-links">
+            <Link to="/Shippingpolicy">Shipping Policy</Link>
+            <Link to="/refundpolicy">Refund and Cancellation</Link>
+          </div>
         </div>
-      </div>
       </div>
     </footer>
   );
 };
+
+const LoadingSpinner = () => (
+  <div className="spinner">
+    <div className="double-bounce1"></div>
+    <div className="double-bounce2"></div>
+  </div>
+);
 
 export default Footer;
