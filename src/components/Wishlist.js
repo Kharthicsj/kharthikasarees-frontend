@@ -13,10 +13,19 @@ const Wishlist = () => {
   const [error, setError] = useState(null);
 
   const getSection = (product) => {
+    // Adjust regex to handle different sections as per your thumbnail URL structure
     const sectionRegex = /https:\/\/kharthikasarees\.s3\.eu-north-1\.amazonaws\.com\/([^/]+)\//;
     const thumbnail = product.thumbnail || '';
     const match = thumbnail.match(sectionRegex);
-    return match ? match[1] : "";
+    if (match) {
+      // Check if the product ID starts with 6 for the Offer section
+      if (product.id.toString().startsWith('6')) {
+        return "Offer";
+      } else {
+        return match[1]; // Return the captured section name
+      }
+    }
+    return "";
   };
 
   useEffect(() => {
