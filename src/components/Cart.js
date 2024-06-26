@@ -44,7 +44,10 @@ const Cart = () => {
   }, [userEmail]);
 
   const calculateTotal = () => {
-    return cart.reduce((total, product) => total + parseFloat(product.price), 0).toFixed(2);
+    return cart.reduce((total, product) => {
+      const price = product.offer ? parseFloat(product.offer) : parseFloat(product.price);
+      return total + price;
+    }, 0).toFixed(2);
   };
 
   const handleCheckout = async () => {
@@ -104,7 +107,7 @@ const Cart = () => {
                 <Link to={`/${product.category}/${product.id}`} style={{ textDecoration: 'none' }}>
                   <h3 className="product-name">{product.name}</h3>
                 </Link>
-                <p className="product-price">₹{product.price}</p>
+                <p className="product-price">₹{product.offer ? product.offer : product.price}</p>
                 <button className="remove-button" onClick={() => removeFromCart(product.id)}>Remove</button>
               </div>
             </div>

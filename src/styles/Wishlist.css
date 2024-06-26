@@ -17,9 +17,7 @@
     text-align: center;
 }
 
-/* Wishlist.css */
-
-.product-title{
+.product-title {
     margin-top: 150px;
     font-family: poppins;
     font-weight: 300;
@@ -74,6 +72,22 @@
     color: #555;
 }
 
+.card-prices {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+}
+
+.card-price-original {
+    color: #888;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.card-price-offer {
+    color: #e74c3c;
+}
+
 /* Adjustments for smaller screens */
 @media (max-width: 992px) {
     .wishlist-item {
@@ -95,4 +109,17 @@
     .wishlist-item:nth-child(-n+5) {
         margin-top: 0;
     }
+}
+
+.heart-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: grey;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.heart-icon.filled {
+    color: red;
 }

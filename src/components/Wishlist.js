@@ -38,6 +38,7 @@ const Wishlist = () => {
           "Pochampalli",
           "KottaCotton",
           "Softsilk",
+          "Offer"
         ];
         const productPromises = sections.map((section) =>
           axios.get(
@@ -84,21 +85,30 @@ const Wishlist = () => {
       <h2 className="product-title">Wishlist</h2>
       {wishlistedProducts.length === 0 ? (
         <div className="emptyBox-container">
-            <img src={EmptyBox} alt="emptyBox" className="emptyBox"></img>
-            <p className="emptyBox-text">You'r wishlist is Empty!!..</p>
+          <img src={EmptyBox} alt="emptyBox" className="emptyBox" />
+          <p className="emptyBox-text">Your wishlist is empty!</p>
         </div>
       ) : (
         <div className="wishlist">
           {wishlistedProducts.map((product) => (
             <div key={product.id} className="wishlist-item">
               <Link
-                to={`/${getSection(product)}/${product.id}`} 
+                to={`/${getSection(product)}/${product.id}`}
                 style={{ textDecoration: "none" }}
               >
                 <img src={product.thumbnail} alt={product.name} />
-                <div>
+                <div className="wishlist-item-content">
                   <h3>{product.name}</h3>
-                  <p>Price: ₹{product.price}</p>
+                  <p className="card-prices">
+                    {product.offer ? (
+                      <>
+                        <span className="card-price-original">₹{product.price}</span>
+                        <span className="card-price-offer">₹{product.offer}</span>
+                      </>
+                    ) : (
+                      <>Price: ₹{product.price}</>
+                    )}
+                  </p>
                 </div>
               </Link>
               <span

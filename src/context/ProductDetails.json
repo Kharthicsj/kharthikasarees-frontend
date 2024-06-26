@@ -1,6 +1,6 @@
 [
   {
-    "id": "100001",
+    "id": "600001",
     "name": "Meena Putta Border",
     "price": "3550",
     "offer": "3000",
@@ -13,7 +13,7 @@
     "image5": "https://kharthikasarees.s3.eu-north-1.amazonaws.com/cotton/Product-1/5.jpg"
   },
   {
-    "id": "1245",
+    "id": "6245",
     "name": "offer test",
     "price": "3555",
     "offer": "2800",
@@ -26,7 +26,7 @@
     "image5": "https://kharthikasarees.s3.eu-north-1.amazonaws.com/cotton/cotton/softsilk.jpeg"
   },
   {
-    "id": "2000001",
+    "id": "6000001",
     "name": "Final Test",
     "price": "1277",
     "offer": "1100",
