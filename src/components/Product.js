@@ -110,17 +110,21 @@ const Product = () => {
           </Slider>
         </div>
         <div className="buttons-container">
-          <h2 className="spe-pro-title">₹{productData.price}<br />{productData.name}</h2>         
-          <button
-            className="add-to-cart-button"
-            onClick={handleCartToggle}
-          >
+          <h2 className="spe-pro-title">
+            {productData.offer ? (
+              <>
+                <s>₹{productData.price}</s> <span>₹{productData.offer}</span>
+              </>
+            ) : (
+              <>₹{productData.price}</>
+            )}
+            <br />
+            {productData.name}
+          </h2>
+          <button className="add-to-cart-button" onClick={handleCartToggle}>
             {isInCart ? "Remove from Cart" : "Add to Cart"}
           </button>
-          <button
-            className="add-to-wishlist-button"
-            onClick={handleWishlistToggle}
-          >
+          <button className="add-to-wishlist-button" onClick={handleWishlistToggle}>
             {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
           </button>
           <p className="description">{productData.description}</p>

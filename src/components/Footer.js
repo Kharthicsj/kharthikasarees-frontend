@@ -106,7 +106,8 @@ const Footer = () => {
         <div className="shipping-delivery">
           <div className="footer-links">
             <Link to="/Shippingpolicy">Shipping Policy</Link>
-            <Link to="/refundpolicy">Refund and Cancellation</Link>
+            <Link to="/refundpolicy">Refund and Cancellation</Link> <br />
+            <Link to="https://valuable-shower-605264.framer.app/">Made with a ❤️ by Kharthic SJ</Link>
           </div>
         </div>
       </div>

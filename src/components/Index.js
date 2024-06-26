@@ -1,19 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import cotton from "../assets/cotton.jpeg";
+import sareeImage from "../assets/saree.webp";
 import "../styles/Index.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
-  { url: require("../assets/saree.webp") },
+  { url: sareeImage, text: "Sample Text 1", offer: "50% off on Cotton Sarees" },
+  { url: sareeImage, text: "Sample Text 2", offer: "25% off on Silk Sarees" },
+  { url: sareeImage, text: "Sample Text 3", offer: "Special discounts on Kotta Cotton" },
+  { url: sareeImage, text: "Sample Text 4", offer: "Flat 30% off on Soft Silk Sarees" },
 ];
 
 const Index = () => {
@@ -28,16 +23,6 @@ const Index = () => {
     }
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-  };
-
   return (
     <div>
       <section className="section-1">
@@ -50,38 +35,37 @@ const Index = () => {
             <img src={cotton} alt="kotta" />
             <p>Kotta Cotton</p>
           </div>
-          <div
-            onClick={() => handleNavigation("/soft-silk")}
-            className="category"
-          >
+          <div onClick={() => handleNavigation("/soft-silk")} className="category">
             <img src={cotton} alt="soft-silk" />
             <p>Soft Silk</p>
           </div>
-          <div
-            onClick={() => handleNavigation("/pochampalli")}
-            className="category"
-          >
+          <div onClick={() => handleNavigation("/pochampalli")} className="category">
             <img src={cotton} alt="pochampalli" />
             <p>Pochampalli</p>
           </div>
-          <div
-            onClick={() => handleNavigation("/silk-cotton")}
-            className="category"
-          >
+          <div onClick={() => handleNavigation("/silk-cotton")} className="category">
             <img src={cotton} alt="silk-cotton" />
             <p>Silk Cotton</p>
           </div>
         </div>
       </section>
       <section className="section-2">
-        <div className="image-slider">
-          <Slider {...settings}>
-            {images.map((image, index) => (
-              <div key={index}>
-                <img src={image.url} alt={`slide-${index}`} />
+        <div className="card-container">
+          {images.map((image, index) => (
+            <div key={index} className="card" onClick={() => handleNavigation("/offer")}>
+              <div
+                className="card-content"
+                style={{ backgroundImage: `url(${image.url})` }}
+              >
+                <div className="offer-info">
+                  <p>{image.offer}</p>
+                </div>
+                <div className="card-text">
+                  <p>{image.text}</p>
+                </div>
               </div>
-            ))}
-          </Slider>
+            </div>
+          ))}
         </div>
       </section>
       <section id="about" className="section-3">
@@ -143,7 +127,9 @@ const Index = () => {
           </p>
         </div>
       </section>
-      <section className="section-4">{/* Offer section */}</section>
+      <section className="section-4">
+        {/* Offer section */}
+      </section>
     </div>
   );
 };

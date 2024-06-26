@@ -23,6 +23,7 @@ import Refundandcancellation from "./components/Refund&cancellation";
 import Shippinganddelivery from "./components/Shipping&delivery";
 import Privacypolicy from "./components/Privacypolicy";
 import Termsandconditions from "./components/Terms&conditions";
+import Offer from "./components/Offer";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -86,6 +87,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Account searchQuery={searchQuery} />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/offer"
+              element={
+                <ProtectedRoute>
+                  <Offer />
                 </ProtectedRoute>
               }
             />
