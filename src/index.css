@@ -113,6 +113,10 @@ body.dark-mode .wishlist-item h3{
   color: white;
 }
 
+body.dark-mode .user-options{
+  background-color: #333;
+}
+
 body.dark-mode .thumbnail-card-text,
 body.dark-mode .card-title,
 body.dark-mode .card-prices {
