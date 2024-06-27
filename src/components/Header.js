@@ -4,8 +4,6 @@ import KSlogo from "../assets/loginLogo.png";
 import LoginLogo from "../assets/Loginlogo.svg";
 import UserHeader from './UserHeader';
 
-
-
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 

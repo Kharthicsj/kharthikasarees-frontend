@@ -115,7 +115,7 @@ const Wishlist = () => {
                         <span className="card-price-offer">₹{product.offer}</span>
                       </>
                     ) : (
-                      <>Price: ₹{product.price}</>
+                      <span className="card-prices">Price: ₹{product.price}</span>
                     )}
                   </p>
                 </div>
