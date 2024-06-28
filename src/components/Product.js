@@ -127,7 +127,10 @@ const Product = () => {
           <button className="add-to-wishlist-button" onClick={handleWishlistToggle}>
             {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
           </button>
-          <p className="description">{productData.description}</p>
+          <div 
+            className="description" 
+            dangerouslySetInnerHTML={{ __html: productData.description }}
+          />
         </div>
       </div>
     </div>
