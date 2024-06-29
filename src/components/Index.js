@@ -1,14 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import cotton from "../assets/cotton.jpeg";
-import sareeImage from "../assets/saree.webp";
+import cottonsareebg from "../assets/cotton-saree-bg.jpeg";
+import KottaCotton from "../assets/KottaCotton.jpeg";
+import silksaree from "../assets/silk-saree.jpeg";
+import pochampalli from "../assets/pochampalli.jpeg";
+import silkcotton from "../assets/silkcotton.jpeg";
+import offer1 from "../assets/offer1.png";
+import offer2 from "../assets/offer2.png";
+import offer3 from "../assets/offer3.png";
+import offer4 from "../assets/offer4.png";
 import "../styles/Index.css";
 
 const images = [
-  { url: sareeImage, text: "Sample Text 1", offer: "50% off on Cotton Sarees" },
-  { url: sareeImage, text: "Sample Text 2", offer: "25% off on Silk Sarees" },
-  { url: sareeImage, text: "Sample Text 3", offer: "Special discounts on Kotta Cotton" },
-  { url: sareeImage, text: "Sample Text 4", offer: "Flat 30% off on Soft Silk Sarees" },
+  { url: offer1, text: "", offer: "20% off on Cotton Sarees" },
+  { url: offer2, text: "", offer: "15% off on Silk Sarees" },
+  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton" },
+  { url: offer4, text: "", offer: "20% off on Soft Silk Sarees" },
 ];
 
 const Index = () => {
@@ -28,23 +35,23 @@ const Index = () => {
       <section className="section-1">
         <div className="categories-container">
           <div onClick={() => handleNavigation("/cotton")} className="category">
-            <img src={cotton} alt="cotton" />
+            <img src={cottonsareebg} alt="cotton" />
             <p>Cotton</p>
           </div>
           <div onClick={() => handleNavigation("/kotta")} className="category">
-            <img src={cotton} alt="kotta" />
+            <img src={KottaCotton} alt="kotta" />
             <p>Kotta Cotton</p>
           </div>
           <div onClick={() => handleNavigation("/soft-silk")} className="category">
-            <img src={cotton} alt="soft-silk" />
+            <img src={silksaree} alt="soft-silk" />
             <p>Soft Silk</p>
           </div>
           <div onClick={() => handleNavigation("/pochampalli")} className="category">
-            <img src={cotton} alt="pochampalli" />
+            <img src={pochampalli} alt="pochampalli" />
             <p>Pochampalli</p>
           </div>
           <div onClick={() => handleNavigation("/silk-cotton")} className="category">
-            <img src={cotton} alt="silk-cotton" />
+            <img src={silkcotton} alt="silk-cotton" />
             <p>Silk Cotton</p>
           </div>
         </div>
