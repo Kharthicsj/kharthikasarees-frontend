@@ -44,7 +44,7 @@ const Index = () => {
           </div> */ }
           <div onClick={() => handleNavigation("/soft-silk")} className="category">
             <img src={silksaree} alt="soft-silk" />
-            <p>Soft Silk</p>
+            <p>Pure Silk / Soft Silk</p>
           </div>
           <div onClick={() => handleNavigation("/pochampalli")} className="category">
             <img src={pochampalli} alt="pochampalli" />
