@@ -12,10 +12,10 @@ import offer4 from "../assets/offer4.png";
 import "../styles/Index.css";
 
 const images = [
-  { url: offer1, text: "", offer: "20% off on Cotton Sarees" },
-  { url: offer2, text: "", offer: "15% off on Silk Sarees" },
-  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton" },
-  { url: offer4, text: "", offer: "20% off on Soft Silk Sarees" },
+  { url: offer1, text: "", offer: "Aadi off on Cotton Sarees" },
+  { url: offer2, text: "", offer: "Special Aadi Off on Pochampalli Sarees" },
+  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton Materials" },
+  { url: offer4, text: "", offer: "Aadi off on Soft Silk Sarees" },
 ];
 
 const Index = () => {
