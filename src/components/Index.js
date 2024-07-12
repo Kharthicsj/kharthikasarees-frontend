@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import cottonsareebg from "../assets/cotton-saree-bg.jpeg";
-import KottaCotton from "../assets/KottaCotton.jpeg";
+//import KottaCotton from "../assets/KottaCotton.jpeg";
 import silksaree from "../assets/silk-saree.jpeg";
 import pochampalli from "../assets/pochampalli.jpeg";
 import silkcotton from "../assets/silkcotton.jpeg";
@@ -38,10 +38,10 @@ const Index = () => {
             <img src={cottonsareebg} alt="cotton" />
             <p>Cotton</p>
           </div>
-          <div onClick={() => handleNavigation("/kotta")} className="category">
+          { /* <div onClick={() => handleNavigation("/kotta")} className="category">
             <img src={KottaCotton} alt="kotta" />
-            <p>Kotta Cotton</p>
-          </div>
+            <p>Kotta Cotton</p> 
+          </div> */ }
           <div onClick={() => handleNavigation("/soft-silk")} className="category">
             <img src={silksaree} alt="soft-silk" />
             <p>Soft Silk</p>
