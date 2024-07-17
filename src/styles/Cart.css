@@ -21,6 +21,11 @@
   animation: spin 1s ease-in-out infinite;
 }
 
+.cart-error {
+  color: red;
+  margin-top: 10px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

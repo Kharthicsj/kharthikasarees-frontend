@@ -107,7 +107,8 @@ const Footer = () => {
           <div className="footer-links">
             <Link to="/Shippingpolicy">Shipping Policy</Link>
             <Link to="/refundpolicy">Refund and Cancellation</Link> <br />
-            <Link to="https://valuable-shower-605264.framer.app/">Made with a ❤️ by Kharthic SJ</Link>
+            <Link to="https://valuable-shower-605264.framer.app/">Made with a ❤️ by Kharthic SJ</Link><br />
+            <Link to="https://trusting-anything-621288.framer.app/">Analyzed and Managed 📈 By Kathirvel S</Link> 
           </div>
         </div>
       </div>

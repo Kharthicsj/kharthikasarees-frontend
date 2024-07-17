@@ -11,6 +11,8 @@ const Cart = () => {
   const [loading, setLoading] = useState(false);
   const [isAddressUpdated, setIsAddressUpdated] = useState(false);
   const [userData, setUserData] = useState(null); // State variable for user data
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false); // State to hold checkbox value
+  const [error, setError] = useState(""); // State to hold error message
   const userEmail = localStorage.getItem('userEmail'); // Fetch userEmail directly
 
   useEffect(() => {
@@ -52,19 +54,25 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     if (!isAddressUpdated) {
-      alert('Please update your shipping address data in the account tab before checking out.');
+      setError('Please update your shipping address data in the account tab before checking out.');
+      alert('Please update your shipping address data in the account tab before checking out.')
       return;
     }
 
     if (!userData) {
-      alert('User data not loaded. Please try again.');
+      setError('User data not loaded. Please try again.');
+      return;
+    }
+
+    if (!acceptedPolicy) {
+      setError('You must accept the shipping, refund, and cancellation policy.');
       return;
     }
 
     let data = {
-      name: userData.firstname, 
-      amount: calculateTotal() * 100, 
-      number: userData.phonenumber, 
+      name: userData.firstname,
+      amount: calculateTotal() * 100,
+      number: userData.phonenumber,
       MID: 'MID' + Date.now(),
       transactionId: 'T' + Date.now()
     };
@@ -116,6 +124,19 @@ const Cart = () => {
             <button className="clear-button" onClick={clearCart}>Clear Cart</button>
             <h3>Total: ₹{calculateTotal()}</h3>
           </div>
+          <div className="terms-container">
+            <input
+              type="checkbox"
+              id="policyCheckbox"
+              name="policyCheckbox"
+              checked={acceptedPolicy}
+              onChange={(e) => setAcceptedPolicy(e.target.checked)}
+            />
+            <label htmlFor="policyCheckbox">
+              I have read and I accept the <Link to="/Shippingpolicy">Shipping Policy</Link>, <Link to="/refundpolicy">Refund and Cancellation Policy</Link>.
+            </label>
+          </div>
+          {error && <div className="cart-error">{error}</div>}
           <div className="checkout-container">
             <button className="checkout-button" onClick={handleCheckout} disabled={loading}>
               {loading ? <span className="spinner"></span> : 'Checkout'}

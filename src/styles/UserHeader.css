@@ -1,3 +1,4 @@
+/* Base styles for the header */
 .header-background {
     display: flex;
     align-items: center;
@@ -21,7 +22,7 @@
     width: 30px;
 }
 
-#intro-text{
+#intro-text {
     font-size: 18px;
     font-family: Poppins, sans-serif;
     font-weight: 300;
@@ -32,7 +33,7 @@
 .user-options {
     display: flex;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 100px;
 }
 
 .user-options a,
@@ -64,7 +65,7 @@
     cursor: pointer;
     margin-left: 10px;
     font-size: 34px;
-  }
+}
 
 /* Tablet and mobile styles */
 @media (max-width: 1024px) {
@@ -74,7 +75,7 @@
 
     .menu-icon {
         display: block;
-        margin-right: 50px;
+        margin-right: 20px;
     }
 
     .user-options {
@@ -114,7 +115,7 @@
 @media (min-width: 1025px) {
     .search-box {
         max-width: 300px;
-        margin-right: 450px;
+        margin-right: auto; /* Adjusted for better alignment */
     }
 
     .menu-icon {
