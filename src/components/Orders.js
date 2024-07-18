@@ -4,7 +4,7 @@ import "../styles/Orders.css";
 import Loading from './Loading';
 
 const Orders = () => {
-  const [orderData, setOrderData] = useState(null);
+  const [orderData, setOrderData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,8 +44,8 @@ const Orders = () => {
       <div className="orders-container">
         <h2>Order Details</h2>
         {loading ? (
-          <Loading />
-        ) : orderData ? (
+          <p>Loading...</p>
+        ) : orderData.length > 0 ? (
           <div className="order-table-container">
             <table className="order-table">
               <thead>
@@ -56,17 +56,23 @@ const Orders = () => {
                   <th>STATUS</th>
                   <th>TOTAL</th>
                   <th>DATE ADDED</th>
+                  <th>Product ID's</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{orderData.transaction_id}</td>
-                  <td>{`${orderData.user_firstname} ${orderData.user_lastname}`}</td>
-                  <td><center>{orderData.items.length}</center></td>
-                  <td>{orderData.status}</td> {/* Assuming status is pending */}
-                  <td>{orderData.total}</td>
-                  <td>{new Date(orderData.order_date).toLocaleDateString()}</td>
-                </tr>
+                {orderData.map((order) => (
+                  <tr key={order.order_id}>
+                    <td>{order.transaction_id}</td>
+                    <td>{`${order.user_firstname} ${order.user_lastname}`}</td>
+                    <td>{order.items.length}</td> {/* Assuming items is an array */}
+                    <td>{order.status}</td> {/* Assuming status is provided by backend */}
+                    <td>{order.total}</td>
+                    <td>{new Date(order.order_date).toLocaleDateString()}</td>
+                    <td>{order.items.map((item, index) => (
+                        <span key={index}>{item.productId}{index < order.items.length - 1 ? ', ' : ''}</span>
+                      ))}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

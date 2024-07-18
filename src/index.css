@@ -82,9 +82,19 @@ body.dark-mode .videos {
 }
 
 body.dark-mode .orders-container{
-  color: black;
+  color: white;
+  background-color: #333;
 }
 
+body.dark-mode .order-table,
+body.dark-mode .order-table td{
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode .order-table th{
+  background-color: #121212;
+}
 
 body.dark-mode .theme-button{
   color: white;
