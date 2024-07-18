@@ -17,6 +17,12 @@
     height: 80px;
 }
 
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
 .search {
     height: 30px;
     width: 30px;
@@ -68,14 +74,14 @@
 }
 
 /* Tablet and mobile styles */
-@media (max-width: 1024px) {
+@media (max-width: 1135px) {
     .search-box {
         display: none;
     }
 
     .menu-icon {
         display: block;
-        margin-right: 20px;
+        margin-right: 50px;
     }
 
     .user-options {
@@ -112,7 +118,7 @@
 }
 
 /* PC styles */
-@media (min-width: 1025px) {
+@media (min-width: 1135) {
     .search-box {
         max-width: 300px;
         margin-right: auto; /* Adjusted for better alignment */

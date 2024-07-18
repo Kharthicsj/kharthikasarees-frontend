@@ -73,11 +73,12 @@ const Footer = () => {
             kharthikasarees@gmail.com
           </a>
           <br />
-          Phone: <a href="tel:+919865857986">+91 9865857986</a>
+          Phone: <a href="tel:+917708339533">+91 7708339533</a>
           <br />
           Phone: <a href="tel:+917373849533">+91 7373849533</a>
           <br />
-          <br />
+          Phone: <a href="tel:+919865857986">+91 9865857986</a>
+          <br /> <br />
           <a
             href="https://www.facebook.com/profile.php?id=61551011396598"
             target="_blank"

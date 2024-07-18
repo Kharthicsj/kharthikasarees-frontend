@@ -46,7 +46,7 @@ body.dark-mode .logout-button {
 }
 
 /* Account Page */
-body.dark-mode .account-container {
+body.dark-mode .account-container  {
   background-color: #121212;
   color: #fff;
 }
@@ -80,6 +80,11 @@ body.dark-mode .videos {
   background-color: #121212;
   color: #fff;
 }
+
+body.dark-mode .orders-container{
+  color: black;
+}
+
 
 body.dark-mode .theme-button{
   color: white;

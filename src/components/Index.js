@@ -12,10 +12,10 @@ import offer4 from "../assets/offer4.png";
 import "../styles/Index.css";
 
 const images = [
-  { url: offer1, text: "", offer: "20% off on Cotton Sarees" },
-  { url: offer2, text: "", offer: "15% off on Silk Sarees" },
-  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton" },
-  { url: offer4, text: "", offer: "20% off on Soft Silk Sarees" },
+  { url: offer1, text: "", offer: "Aadi Offers on Cotton Sarees" },
+  { url: offer2, text: "", offer: "Special Discounts on Pochampalli" },
+  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton Materials" },
+  { url: offer4, text: "", offer: "Aadi offers on Soft Silk Sarees" },
 ];
 
 const Index = () => {
@@ -44,7 +44,7 @@ const Index = () => {
           </div> */ }
           <div onClick={() => handleNavigation("/soft-silk")} className="category">
             <img src={silksaree} alt="soft-silk" />
-            <p>Soft Silk</p>
+            <p>Soft/Pure Silk</p>
           </div>
           <div onClick={() => handleNavigation("/pochampalli")} className="category">
             <img src={pochampalli} alt="pochampalli" />

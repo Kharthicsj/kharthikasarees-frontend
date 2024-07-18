@@ -24,6 +24,7 @@ import Shippinganddelivery from "./components/Shipping&delivery";
 import Privacypolicy from "./components/Privacypolicy";
 import Termsandconditions from "./components/Terms&conditions";
 import Offer from "./components/Offer";
+import Orders from "./components/Orders";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -119,6 +120,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Cart searchQuery={searchQuery} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/MyOrders"
+              element={
+                <ProtectedRoute>
+                  <Orders searchQuery={searchQuery} />
                 </ProtectedRoute>
               }
             />
