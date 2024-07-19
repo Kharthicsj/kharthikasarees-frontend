@@ -1,21 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import cottonsareebg from "../assets/cotton-saree-bg.jpeg";
 //import KottaCotton from "../assets/KottaCotton.jpeg";
-import silksaree from "../assets/silk-saree.jpeg";
-import pochampalli from "../assets/pochampalli.jpeg";
-import silkcotton from "../assets/silkcotton.jpeg";
-import offer1 from "../assets/offer1.png";
-import offer2 from "../assets/offer2.png";
-import offer3 from "../assets/offer3.png";
-import offer4 from "../assets/offer4.png";
+//import silksaree from "../assets/silk-saree.jpeg";
+//import pochampalli from "../assets/pochampalli.jpeg";
+//import silkcotton from "../assets/silkcotton.jpeg";
+//import offer1 from "../assets/offer1.png";
+//import offer2 from "../assets/offer2.png";
+//import offer3 from "../assets/offer3.png";
+//import offer4 from "../assets/offer4.png";
 import "../styles/Index.css";
+import Loading from "./Loading";
 
 const images = [
-  { url: offer1, text: "", offer: "Aadi Offers on Cotton Sarees" },
-  { url: offer2, text: "", offer: "Special Discounts on Pochampalli" },
-  { url: offer3, text: "", offer: "Special discounts on Kotta Cotton Materials" },
-  { url: offer4, text: "", offer: "Aadi offers on Soft Silk Sarees" },
+  { url: "https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/offer1.png", text: "", offer: "Aadi Offers on Cotton Sarees" },
+  { url: "https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/offer2.png", text: "", offer: "Special Discounts on Pochampalli" },
+  { url: "https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/offer3.png", text: "", offer: "Special discounts on Kotta Cotton Materials" },
+  { url: "https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/offer4.png", text: "", offer: "Aadi offers on Soft Silk Sarees" },
 ];
 
 const Index = () => {
@@ -35,7 +35,7 @@ const Index = () => {
       <section className="section-1">
         <div className="categories-container">
           <div onClick={() => handleNavigation("/cotton")} className="category">
-            <img src={cottonsareebg} alt="cotton" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/cotton-saree-bg.jpeg" alt="cotton" />
             <p>Cotton</p>
           </div>
           { /* <div onClick={() => handleNavigation("/kotta")} className="category">
@@ -43,15 +43,15 @@ const Index = () => {
             <p>Kotta Cotton</p> 
           </div> */ }
           <div onClick={() => handleNavigation("/soft-silk")} className="category">
-            <img src={silksaree} alt="soft-silk" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/silk-saree.jpeg" alt="soft-silk" />
             <p>Soft/Pure Silk</p>
           </div>
           <div onClick={() => handleNavigation("/pochampalli")} className="category">
-            <img src={pochampalli} alt="pochampalli" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/pochampalli.jpeg" alt="pochampalli" />
             <p>Pochampalli</p>
           </div>
           <div onClick={() => handleNavigation("/silk-cotton")} className="category">
-            <img src={silkcotton} alt="silk-cotton" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/silkcotton.jpeg" alt="silk-cotton" />
             <p>Silk Cotton</p>
           </div>
         </div>

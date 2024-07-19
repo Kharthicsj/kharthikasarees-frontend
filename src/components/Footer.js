@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "../../src/styles/Footer.css";
-import facebooklogo from "../assets/facebook.png";
-import instalogo from "../assets/instagram.png";
-import youtubelogo from "../assets/youtube.png";
-import whatsappLogo from "../assets/whatsapp.png";
+//import facebooklogo from "../assets/facebook.png";
+//import instalogo from "../assets/instagram.png";
+//import youtubelogo from "../assets/youtube.png";
+//import whatsappLogo from "../assets/whatsapp.png";
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -86,7 +86,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             title="Facebook"
           >
-            <img src={facebooklogo} alt="Facebook" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/facebook.png" alt="Facebook" />
           </a>
           <a
             href="https://www.instagram.com/kharthika_sarees"
@@ -94,7 +94,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             title="Instagram"
           >
-            <img src={instalogo} alt="Instagram" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/instagram.png" alt="Instagram" />
           </a>
           <a
             href="https://www.youtube.com/channel/UColMm4MyRnnSM8FuFExYIqA"
@@ -102,7 +102,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             title="Youtube"
           >
-            <img src={youtubelogo} alt="Youtube" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/youtube.png" alt="Youtube" />
           </a>
           <a
             href="https://wa.me/message/RDUZARSJ2ES4E1"
@@ -110,7 +110,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             title="Whatsapp"
           >
-            <img src={whatsappLogo} alt="Youtube" />
+            <img src="https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/whatsapp.png" alt="Youtube" />
           </a>
         </p>
         <div className="shipping-delivery">
