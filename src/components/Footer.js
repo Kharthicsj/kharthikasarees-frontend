@@ -5,6 +5,7 @@ import "../../src/styles/Footer.css";
 import facebooklogo from "../assets/facebook.png";
 import instalogo from "../assets/instagram.png";
 import youtubelogo from "../assets/youtube.png";
+import whatsappLogo from "../assets/whatsapp.png";
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -102,6 +103,14 @@ const Footer = () => {
             title="Youtube"
           >
             <img src={youtubelogo} alt="Youtube" />
+          </a>
+          <a
+            href="https://wa.me/message/RDUZARSJ2ES4E1"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Whatsapp"
+          >
+            <img src={whatsappLogo} alt="Youtube" />
           </a>
         </p>
         <div className="shipping-delivery">
