@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 //import offer3 from "../assets/offer3.png";
 //import offer4 from "../assets/offer4.png";
 import "../styles/Index.css";
-import Loading from "./Loading";
 
 const images = [
   { url: "https://kharthikasarees.s3.eu-north-1.amazonaws.com/assets/offer1.png", text: "", offer: "Aadi Offers on Cotton Sarees" },
