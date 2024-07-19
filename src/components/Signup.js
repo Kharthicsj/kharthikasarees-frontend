@@ -40,19 +40,31 @@ const Signup = () => {
     setOtp(event.target.value);
   };
 
-  const handleSendOtp = (event) => {
+  const handleSendOtp = async (event) => {
     event.preventDefault();
     setOtpLoading(true);
-    axios
-      .post("https://kharthikasarees-backend.onrender.com/generate-otp", { email: values.email })
-      .then((res) => {
-        setOtpSent(true);
-        setOtpLoading(false);
-      })
-      .catch((err) => {
-        setError("Error sending OTP. Please try again.");
-        setOtpLoading(false);
-      });
+
+    const emailLower = values.email.toLowerCase();
+
+    try {
+      // Check if email already exists
+      const response = await axios.post("https://kharthikasarees-backend.onrender.com/check-email", { email: emailLower });
+
+      if (response.status === 400) {
+        // User already exists
+        setError("User already exists. Please use a different email.");
+        setOtpSent(false);
+        return;
+      }
+
+      // Proceed to send OTP if email does not exist
+      await axios.post("https://kharthikasarees-backend.onrender.com/generate-otp", { email: emailLower });
+      setOtpSent(true);
+    } catch (err) {
+      setError("User already exists, Please use a different email or Error sending OTP. Please try again.");
+    } finally {
+      setOtpLoading(false);
+    }
   };
 
   const handleVerifyOtp = (event) => {
@@ -136,7 +148,7 @@ const Signup = () => {
                 required
               />
               <label htmlFor="terms">
-                I accept the <Link to="/terms">Terms and Conditions</Link> and <Link to="/privacy">Privacy Policy</Link>.
+                I accept the <Link to="/terms">Terms and Conditions</Link> and <Link to="/privacy">Privacy Policy</Link> <br /> and the details provided above are true.
               </label>
             </div>
             <button type="submit" className="signup-submit" disabled={otpLoading}>
