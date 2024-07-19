@@ -156,7 +156,7 @@ const Signup = () => {
               onChange={handleOtpChange}
               required
             />
-            <button type="submit" className="signup-submit-otp" disabled={otpLoading}>
+            <button type="submit" className="signup-submit" disabled={otpLoading}>
               {otpLoading ? <span className="spinner"></span> : 'Verify OTP'}
             </button>
             {error && <div className="signup-error">{error}</div>}
