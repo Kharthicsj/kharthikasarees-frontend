@@ -9,13 +9,6 @@ const Header = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('user');
-    setIsLoggedIn(false);
-    window.location.reload();
-  };
-
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loginStatus);
@@ -24,7 +17,7 @@ const Header = () => {
   return (
     <div>
       {isLoggedIn ? (
-        <UserHeader handleLogout={handleLogout} />
+        <UserHeader />
       ) : (
         <div className="header-background">
           <img src={KSlogo} alt="KS Logo" className="kslogo" draggable='false'></img>
