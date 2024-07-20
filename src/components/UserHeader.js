@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import "../styles/UserHeader.css";
 import KSlogo from "../assets/loginLogo.png";
 import searchIcon from "../assets/search.svg";
@@ -10,7 +10,6 @@ const UserHeader = () => {
   const [showMore, setShowMore] = useState(false);
   const userOptionsRef = useRef(null);
   const moreOptionsRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -56,7 +55,6 @@ const UserHeader = () => {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
-    navigate('/login');
     window.location.reload();
   };
 
