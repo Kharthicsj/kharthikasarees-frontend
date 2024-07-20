@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/Header.css";
 import KSlogo from "../assets/loginLogo.png";
 import LoginLogo from "../assets/Loginlogo.svg";
 import UserHeader from './UserHeader';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
   const handleLogout = () => {
@@ -26,7 +28,7 @@ const Header = () => {
       ) : (
         <div className="header-background">
           <img src={KSlogo} alt="KS Logo" className="kslogo" draggable='false'></img>
-          <button className='Login' onClick={() => { window.location.href = '/login'; }}>
+          <button className='Login' onClick={() => { navigate('/login') }}>
             <img src={LoginLogo} alt='LoginLogo' id='loginLogo' draggable='false'></img>
             Login
           </button>
